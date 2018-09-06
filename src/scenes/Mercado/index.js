@@ -22,7 +22,7 @@ class Mercado extends Component {
         super(props);
         this.state = {
             ArticleListMercado: [],
-           
+
         }
     }
 
@@ -55,7 +55,7 @@ class Mercado extends Component {
                     source={require('./components/image/descarga.jpeg')}/>
                 </View>
                 <View>
-                    <ScrollView style={styles.container}>
+                    {/*<ScrollView style={styles.container}>
 
                         <SectionList
 
@@ -66,10 +66,10 @@ class Mercado extends Component {
                             sections={[{
                                 data: this.state.ArticleListMercado, key: 'Viveres'
                             },
-                       
+
                             ]}
                         ></SectionList>
-                    </ScrollView>
+                    </ScrollView>*/}
                 </View>
             </ScrollView>
         );

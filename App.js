@@ -23,11 +23,11 @@ const AppNavigator = createStackNavigator({
   MercadoScreen: {
     screen: Mercado
   },
-  
+
   DetalleScreen: {
     screen: Detalle
   },
-    
+
   CarritoScreen: {
     screen: Carrito
   },
@@ -40,17 +40,7 @@ const AppNavigator = createStackNavigator({
 },
   {
     initialRouteName: 'MercadoScreen',
-    navigationOptions: {
-      headerStyle: {
-        backgroundColor: '#F5A9A9',
-        borderBottomColor: '#4527A0'
-      },
-      headerTintColor: '#fff',
-      headerTitleStyle: {
-        fontWeight: '500',
-        fontSize: 18,
-      }
-    }
+      headerMode: 'none',
   }
 
 );
@@ -69,7 +59,7 @@ export default class App extends Component<Props> {
   render() {
     return (
       <AppNavigator />
-      
+
     );
   }
 }
