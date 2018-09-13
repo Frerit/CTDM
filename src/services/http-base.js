@@ -51,6 +51,7 @@ class HttpBase {
 
 
     buildParams(params) {
+        // cambiar los parametros de clave valor a GET
         return params;
     }
 
