@@ -15,6 +15,7 @@ YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTIm
 
 import ItemCatalogo from './components/item-catalogo';
 import ItemSeparator from './components/item-separator';
+import httpUser from '../../services/Users/http-user';
 
 
 class Mercado extends Component {
@@ -24,14 +25,15 @@ class Mercado extends Component {
             ArticleListMercado: [],
 
         }
+
+        this.getUserByToken();
+        this.getUsers();
     }
 
-    //Ciclo de vida del componente
     async componentDidMount() {
         const data = await Api.getArticleAwait();
         console.log(data);
         this.setState({ ArticleListMercado:data,})
-
     }
 
     static navigationOptions = {
@@ -39,6 +41,14 @@ class Mercado extends Component {
         headerTitleStyle: {
             fontSize: 26,
         }
+    }
+
+    async getUser() {
+        const data = await httpUser.getUser();
+    }
+
+    async getUserByToken() {
+        const data = await httpUser.getUserByToken();
     }
 
     renderItem = ({ item }) => <ItemCatalogo navigation={this.props.navigation} article={item} />;
@@ -55,21 +65,18 @@ class Mercado extends Component {
                     source={require('./components/image/descarga.jpeg')}/>
                 </View>
                 <View>
-                    {/*<ScrollView style={styles.container}>
-
-                        <SectionList
-
+                    <ScrollView style={styles.container}> 
+                        <SectionList 
                             renderItem={this.renderItem}
                             renderSectionHeader={this.sectionHeader}
                             ItemSeparatorComponent={this.separatorComponent}
                             keyExtractor={this.keyExtractor}
                             sections={[{
                                 data: this.state.ArticleListMercado, key: 'Viveres'
-                            },
-
+                                },
                             ]}
                         ></SectionList>
-                    </ScrollView>*/}
+                    </ScrollView>
                 </View>
             </ScrollView>
         );
@@ -79,7 +86,6 @@ class Mercado extends Component {
 
 const styles = StyleSheet.create({
     container: {
-
         marginLeft: 2,
         marginRight: 2
     },
@@ -88,6 +94,7 @@ const styles = StyleSheet.create({
         width: 414,
         height: 280
     },
+    
     header: {
         fontSize: 18,
         backgroundColor: '#F5A9A9',
@@ -95,9 +102,7 @@ const styles = StyleSheet.create({
         paddingVertical: 3,
         marginBottom: 3,
         paddingLeft: 10,
-
     }
-
 });
 
 
